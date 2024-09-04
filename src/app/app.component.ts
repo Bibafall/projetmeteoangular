@@ -13,17 +13,18 @@ export class AppComponent implements OnInit {
 
   }
 
-  cityName: String = 'Dakar';
+  cityName: String = 'Senegal';
   WeatherData?: weatherData;
 
   ngOnInit(): void {
-
+    this.getWeatherData(this.cityName);
 
 
   }
 
   onSubmit() {
-    this.getWeatherData(cityName)
+    this.getWeatherData(this.cityName);
+    this.cityName = '' ;
   }
 
   private getWeatherData(cityName: string) {
