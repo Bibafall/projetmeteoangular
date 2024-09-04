@@ -1,0 +1,63 @@
+<div class="search">
+  <form #form="ngForm" (submit)="onSubmit" ()>
+    <input type="text" aria-placeholder="rechercher ville" name="city" [(ngModel)]="cityName"></input>
+  </form>
+</div>
+
+<div class="container" *ngIf="weatherData">
+  <div class="upper-data">
+    <img src="./assets/images/aerial-photograph-1381611_1280.jpg" *ngIf="weatherData.main.temp > 15">
+    <img src="./assets/images/sky-5114501_1280.jpg" *ngIf="weatherData.main.temp <= 15">
+
+    <div class="weather-data">
+      <div class="location">{{weatherData.name}}</div>
+      <div class="temperature">{{weatherData.main | number: '1.0-0'}}°C</div>
+    </div>
+
+  </div>
+
+  <div class="lower-data">
+    <div class="more-info-label">Plus d'informations</div>
+    <div class="lore-info-container">
+      <div class="info-block">
+        <div class="info-block-label">
+          <i class="las la-temperature-low"></i>
+          <span>Min</span>
+        </div>
+        <div class="info-block-value">{{weatherData.main.temp_min | number: '1.0-0'}}°C</div>
+      </div>
+    </div>
+
+    <div class="more-info-container">
+      <div class="info-block">
+        <div class="info-block-label">
+          <i class="las la-thermometer-full"></i>
+          <span>Max</span>
+        </div>
+        <div class="info-block-value">{{weatherData.main.temp_max | number: '1.0-0'}}°C</div>
+      </div>
+    </div>
+
+    <div class="more-info-container">
+      <div class="info-block">
+        <div class="info-block-label">
+          <i class="las la-tint"></i>
+          <span>Humidité</span>
+        </div>
+        <div class="info-block-value">{{weatherData.main.humidity}}%</div>
+      </div>
+    </div>
+    <div class="more-info-container">
+      <div class="info-block">
+        <div class="info-block-label">
+          <i class="las la-wind"></i>
+          <span>Vent</span>
+        </div>
+        <div class="info-block-value">{{weatherData.wind.speed}} km/h</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<router-outlet></router-outlet>
